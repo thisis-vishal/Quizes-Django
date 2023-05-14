@@ -37,6 +37,9 @@ Mongo Server must be running
 
 ## APIs
 
+
+### API endpoint if you wanna use https://quizes-django.vercel.app/
+
 ### _POST /quizzes_ - to create a new quiz
 
 The body of this APIs must be like:
