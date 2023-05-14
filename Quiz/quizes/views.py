@@ -50,3 +50,12 @@ class getQuizes(APIView):
         data=collection_name.find({})
         x=self.parse_json(data)
         return Response({'ans':x})
+class getActiveQuize(APIView):
+    def parse_json(self,data):
+        return json.loads(json_util.dumps(data))
+    def get(self, request):
+        data=collection_name.find({})
+        for i in data:
+            print(i)
+            if i['status']=="active":
+                return Response(self.parse_json(i))
