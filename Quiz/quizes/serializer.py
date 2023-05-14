@@ -1,7 +1,7 @@
 from .models import QuizData
 from rest_framework import serializers
 
-class UserSerializer(serializers.ModelSerializer):
+class quizSerializer(serializers.ModelSerializer):
     class Meta:
         model = QuizData
         fields = ['question', 'options', 'rightAnswer', 'startDate','endDate']
