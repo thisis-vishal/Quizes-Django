@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-il8f7v&_k0s+slbp0_=0sa#@+r663t%8-^-^@30_xss=)a1e+i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['quizes-django.vercel.app']
+ALLOWED_HOSTS = ['quizes-django.vercel.app','127.0.0.1']
 
 
 # Application definition

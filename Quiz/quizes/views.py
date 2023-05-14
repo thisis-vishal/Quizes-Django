@@ -13,7 +13,6 @@ from pymongo.mongo_client import MongoClient
 uri = "mongodb+srv://thisisvishal:Vishal9634@cluster0.b1vrwir.mongodb.net/?retryWrites=true&w=majority"
 from django.conf import settings
 my_client = MongoClient(uri)
-
 try:
     my_client.admin.command('ping')
     print("Pinged your deployment. You successfully connected to MongoDB!")
@@ -23,6 +22,8 @@ except Exception as e:
 dbname = my_client['Heliverse']
 collection_name = dbname["quizes_quizdata"]
 
+def welcome(request):
+    return HttpResponse("welcome to quiz APIs")
 
 class postQuiz(APIView):
     def post(self, request):
