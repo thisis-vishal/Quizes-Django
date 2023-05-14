@@ -92,5 +92,13 @@ The response will be like:
 
 `{"ans":[{"_id":{"$oid":"***********"},"id":1,"question":"What is 1+1","options":"[0, 1, 2, 3]","rightAnswer":2,"startDate":{"$date":1684022400000},"endDate":{"$date":1684108800000},"status":null},{"_id":{"$oid":"**********"},"id":2,"question":"What is 3+1","options":"[0, 1, 4, 3]","rightAnswer":2,"startDate":{"$date":1684022400000},"endDate":{"$date":1684108800000},"status":"active"},{"_id":{"$oid":"**********"},"id":3,"question":"What is 5+1","options":"[0, 1, 6, 3]","rightAnswer":2,"startDate":{"$date":1684022400000},"endDate":{"$date":1684108800000},"status":null}]}`
 
+### _GET /check_ - check status of quiz
+
+The response will be like:
+
+`{{"changes":[{"_id":{"$oid":"6460d821d602f2e473fbcb42"},"id":1,"question":"What is 5+1","options":[0,1,6,3],"rightAnswer":2,"startDate":{"$date":1684022400000},"endDate":{"$date":1684108800000},"status":null},{"_id":{"$oid":"6460e41d5fa77aeb3500bb9c"},"id":2,"question":"What is 7+1","options":[0,1,6,8],"rightAnswer":3,"startDate":{"$date":1684195200000},"endDate":{"$date":1684281600000},"status":null}]}`
+
+Anyone can use cron job to check status daily
+
 
 
