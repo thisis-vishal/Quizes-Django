@@ -9,7 +9,10 @@ from rest_framework.response import Response
 import pymongo
 from .models import QuizData
 from bson import ObjectId,json_util
+from datetime import datetime
 from pymongo.mongo_client import MongoClient
+
+
 uri = "mongodb+srv://thisisvishal:Vishal9634@cluster0.b1vrwir.mongodb.net/?retryWrites=true&w=majority"
 from django.conf import settings
 my_client = MongoClient(uri)
@@ -81,3 +84,26 @@ class getActiveQuize(APIView):
                     return Response(self.parse_json(i))
         except:
             return Response({'result':"something went wrong"})
+
+class checkStatus(APIView):
+    def parse_json(self,data):
+        return json.loads(json_util.dumps(data))
+    def get(self, request):
+        # try:
+            data=collection_name.find({})
+            x=[]
+            for i in data:
+                if i['startDate']<datetime.today() and i['endDate']>datetime.today():
+                    collection_name.find_and_modify(query={'id':i['id']},update={"$set":{"status":'active'}})
+                    x.append(self.parse_json(i))
+                elif i['endDate']<datetime.today():
+                    collection_name.find_and_modify(query={'id':i['id']},update={"$set":{"status":'finished'}})
+                    x.append(self.parse_json(i))
+                elif i['startDate']>datetime.today():
+                    collection_name.find_and_modify(query={'id':i['id']},update={"$set":{"status":'inactive'}})
+                    x.append(self.parse_json(i))
+                
+            return Response({'changes':x})
+            
+        # except:
+        #     return Response({'result':"something went wrong"})

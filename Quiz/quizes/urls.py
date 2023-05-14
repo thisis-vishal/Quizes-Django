@@ -9,4 +9,5 @@ urlpatterns = [
     path('quizzes/active',views.getActiveQuize.as_view()),
     path('quizzes/<postcode>',views.getQuiz.as_view()),
     path('quizzes/<postcode>/result',views.ansQuiz.as_view()),
+    path('check/',views.checkStatus.as_view()),
 ]
