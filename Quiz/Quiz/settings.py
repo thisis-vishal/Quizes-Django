@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+
 ]
 
 REST_FRAMEWORK={
@@ -85,12 +86,17 @@ WSGI_APPLICATION = 'Quiz.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE':'djongo',
-        'NAME':'Heliverse',
+        'default': {
+        'ENGINE': 'djongo',
+        "CLIENT": {
+        "host": "mongodb+srv://thisisvishal:Vishal9634@cluster0.b1vrwir.mongodb.net/?retryWrites=true&w=majority",
+        "username": "thisisvishal",
+        "password": "Vishal9634",
+        "name": "Heliverse",
+        "authMechanism": "SCRAM-SHA-1",
+        },
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -133,4 +139,3 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'quizes.User'
