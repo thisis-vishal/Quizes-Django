@@ -56,7 +56,7 @@ class ansQuiz(APIView):
             postcode=ObjectId(postcode)
             filter={"_id":0}
             data=collection_name.find_one({"_id" :postcode},filter)
-            opt = data['options'].strip('][').split(', ')
+            opt = data['options']
             ansIndex=data['rightAnswer']
             return Response({'ans':opt[ansIndex]})
         except:
@@ -89,7 +89,7 @@ class checkStatus(APIView):
     def parse_json(self,data):
         return json.loads(json_util.dumps(data))
     def get(self, request):
-        # try:
+        try:
             data=collection_name.find({})
             x=[]
             for i in data:
@@ -105,5 +105,5 @@ class checkStatus(APIView):
                 
             return Response({'changes':x})
             
-        # except:
-        #     return Response({'result':"something went wrong"})
+        except:
+            return Response({'result':"something went wrong"})
